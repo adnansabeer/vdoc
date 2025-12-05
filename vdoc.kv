@@ -1,0 +1,82 @@
+main:
+    MDNavigationLayout:
+    
+        ScreenManager:
+            id: main_screen_manager
+            Screen:
+                name: "HOME"
+                Screen:
+                    id: main_screen
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 5
+                        canvas.before:
+                            Color:
+                                rgba: 0.96, 0.98, 1, 1   
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        MDTopAppBar:
+                            title: "VDOC"
+                            elevation: 0
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                            disabled: not app.bol
+                        MDLabel:
+                            markup: True
+                            text: "[b][color=#2196F3]World’s First Autonomous \nMedical Robot[/color][/b]"
+                            halign: 'center'
+                            valign: 'bottom'
+                            font_size: 32
+
+
+                        FloatLayout:
+                            padding: 20
+                            spacing: 20
+                            MDFillRoundFlatButton:
+                                id: menu_button
+                                text: 'Start Medical Checkup'
+                                font_size: 35
+                                
+                                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                                on_release: app.open_popup()
+            Screen:
+                name: "LIST"
+                MDBoxLayout:
+                    orientation: 'vertical'
+
+                    MDTopAppBar:
+                        title: "List of patients"
+                        elevation: 0
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: [0, 0, 0, 0]
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+
+                MDLabel:
+                    text: "Dashboard"
+                    font_style: 'H6'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                ScrollView:
+                    MDList:
+                        OneLineIconListItem:
+                            text: "HOME"
+                            on_press:
+                                main_screen_manager.current = 'HOME'
+                                nav_drawer.set_state("close")
+                            IconLeftWidget:
+                                icon: "home"
+
+                        OneLineIconListItem:
+                            text: "LIST"
+                            on_press:
+                                main_screen_manager.current = 'LIST'
+                                nav_drawer.set_state("close")
+                            IconLeftWidget:
+                                icon: "tab"
