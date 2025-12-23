@@ -14,10 +14,9 @@
 | Python                 | 3.10    |
 | Kivy                   | 2.3.1   |
 | KivyMD                 | 1.2.0   |
-| OpenCV                  | Latest |
-| face-recognition        | Latest |
-| mysql-connector-python  | Latest |
-
+| OpenCV                 | 4.12.0.88 |
+| face-recognition       | 1.3.0   |
+| mysql-connector-python | 9.5.0   |
 ---
 
 ## Setup & Run
